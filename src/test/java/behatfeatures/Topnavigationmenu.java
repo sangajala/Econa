@@ -60,8 +60,7 @@ public class Topnavigationmenu {
         System.out.println("corresponding menu found ");
     }
     @After
-    public void close_Browser(){
-    driver.quit();
+    public void close_Browser(){    driver.quit();
     }
 
 }
