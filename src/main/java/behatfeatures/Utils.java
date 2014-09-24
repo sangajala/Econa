@@ -10,7 +10,7 @@ public class Utils {
         return driver.getPageSource().contains(text);
     }
 
-    public static void pause(int time)
+      public static void pause(int time)
     {
         try {
             Thread.sleep(time*1000);
