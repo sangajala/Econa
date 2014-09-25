@@ -36,7 +36,7 @@ public class Topnavigationmenu {
         driver.get(homepage_url);
     }
 
-    @Then("^\"(.*?)\" Navigation menus should be shown in the top of the screen$")
+    @Then("^\"(.*?)\" Navigation menus should be shown on the top of the screen$")
     public void navigation_menu_should_be_shown_in_the_top_of_the_screen(String arg1) throws Throwable {
 
         List<WebElement> mainmenu = driver.findElements(By.partialLinkText(arg1));
@@ -45,8 +45,8 @@ public class Topnavigationmenu {
         System.out.println("Menu found successfully");
     }
 
-    @When("^consumers presses a Navigation  menu \"(.*?)\"$")
-    public void consumers_presses_a_Navigation_menu(String arg1) throws Throwable {
+    @When("^Consumer clicks a Navigation  menu \"(.*?)\"$")
+    public void Consumer_clicks_a_Navigation_menu(String arg1) throws Throwable {
         WebElement mainmenu = driver.findElement(By.partialLinkText(arg1));
         System.out.println(arg1);
         mainmenu.click();
@@ -60,11 +60,6 @@ public class Topnavigationmenu {
         assertTrue(submenu.contains(arg1));
         System.out.println("corresponding menu found ");
     }
-    @After
-    public void close_Browser(){    driver.quit();
-    }
-
-
     @When("^Consumer moves the mouse over a menu with flyout \"(.*?)\"$")
     public void Consumer_moves_the_mouse_over_a_menu_with_flyout(String arg1) throws Throwable {
         WebElement element = driver.findElement(By.linkText(arg1));
@@ -72,21 +67,36 @@ public class Topnavigationmenu {
         action.moveToElement(element).build().perform();
     }
 
-    @Then("^\"(.*?)\" Submenus should be shown on the screen$")
-    public void submenus_should_be_shown_on_the_screen(String arg1) throws Throwable {
+    @Then("^\"(.*?)\" Flyoutmenu should be shown on the screen$")
+    public void flyoutmenu_should_be_shown_on_the_screen(String arg1) throws Throwable {
         String titlepage = driver.getPageSource();
         assertTrue(titlepage.contains(arg1));
     }
-
-    @When("^Consumer moves the mouse over \"(.*?)\"$\" menu")
-    public void Consumer_moves_the_mouse_over(String arg1){
+    @When("^Consumer moves the mouse over \"(.*?)\" menu$" )
+    public void Consumer_moves_the_mouse_over_menu(String arg1) throws Throwable {
         int min = 1, max = 30;
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
     }
-    @Then("^Submenu screen should be shown \"(.*?)\"$")
-    public void  Submenu_screen_should_be_shown(String arg1){
+    @When("^Selects a vendor \"(.*?)\" from Finanzen menu$")
+    public void selects_a_vendor_from_Finanzen_menu(String arg1) throws Throwable {
 
     }
+
+    @When("^Selects a vendor \"(.*?)\" from Gutscheine menu$")
+    public void selects_a_vendor_from_Gutscheine_menu(String arg1) throws Throwable {
+
+    }
+
+    @Then("^Screen should show details of selected vendor in the screen$")
+    public void Screen_should_show_details_of_selected_vendor_in_the_screen() throws Throwable {
+
+    }
+
+    @After
+    public void close_Browser(){    driver.quit();
+    }
+
+
 }

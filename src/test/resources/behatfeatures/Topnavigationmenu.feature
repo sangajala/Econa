@@ -22,7 +22,7 @@ Feature: Top Navigation menus
 
   Scenario Outline:All top navigation menus are reachable
      Given Consumer is in the HomePage
-      When Consumers presses a Navigation  menu <NavigationMenu>
+      When Consumer clicks a Navigation  menu <NavigationMenu>
       Then The <ResultScreen> corresponding menu screen should be shown
 
   Examples:
@@ -36,7 +36,7 @@ Feature: Top Navigation menus
 @Flyoutmenu
 
   Scenario Outline: Flyout menus are shown for relevant top navigation menus on mouseover
-    Given  Consumer is in the HomePage
+     Given Consumer is in the HomePage
      When  Consumer moves the mouse over a menu with flyout <MenuwithFlyout>
      Then  <Flyoutmenu> Flyoutmenu should be shown on the screen
 
@@ -48,25 +48,25 @@ Feature: Top Navigation menus
 @Gutscheineflyoutmenu
 
   Scenario Outline: Gutscheine flyout menus are navigable
-     Given Consumer is in the HomePage
-      When Consumer moves the mouse over "Gutscheine" menu
-       And Clicks a Gutscheine flyout menu <Submenu>
-      Then Submenu screen should be shown
+    Given Consumer is in the HomePage
+     When Consumer moves the mouse over "Gutscheine" menu
+      And Selects a vendor <vendor> from Gutscheine menu
+     Then Screen should show details of selected vendor in the screen
 
   Examples:
-    | Submenu                             |
+    |  vendor                             |
     | "Gutscheinemenu-1"                  |
     | "Gutscheinemenu-2"                  |
 
 @Finanzenflyoutmenu
 
   Scenario Outline: Finanzen flyout menus are navigable
-     Given Consumer is in the HomePage
-      When Consumer moves the mouse over "Finanzen" menu
-       And Clicks a Finanzen flyout menu <Submenu>
-      Then Submenu screen should be shown
+    Given Consumer is in the HomePage
+     When Consumer moves the mouse over "Finanzen" menu
+      And Selects a vendor <vendor> from Finanzen menu
+     Then Screen should show details of selected vendor in the screen
 
   Examples:
-    | Submenu                           |
+    |  vendor                           |
     | "Finanzenmenu-1"                  |
     | "Finanzenmenu-2"                  |

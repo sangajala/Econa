@@ -22,16 +22,9 @@ public class Search {
     private WebDriver driver;
     private String homepage_url = "http://www.sparwelt.de/";
 
-    @Before
-    public void startBrowser()
-    {
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        Utils.driver = driver;
-    }
-    @When("^Consumer enters a complete vendor name \"(.*?)\" in the search box$")
-    public void consumer_enters_a_complete_vendor_name_in_the_search_box(String arg1) throws Throwable {
+
+   @When("^Consumer enters a complete vendor name \"(.*?)\" in the \"(.*?)\" search box$")
+    public void consumer_enters_a_complete_vendor_name_in_the_search_box(String arg1, String arg2) throws Throwable {
 
     }
     @When("^Consumer selects a vendor from the drop-down suggestion$")
@@ -60,23 +53,17 @@ public class Search {
 
     }
 
-    @When("^Consumer enters a part of vendor name \"(.*?)\" in the search box$")
-    public void consumer_enters_a_part_of_vendor_name_in_the_search_box(String arg1) throws Throwable {
+    @When("^Consumer enters a part of vendor name \"(.*?)\" in the \"(.*?)\" search box$")
+    public void consumer_enters_a_part_of_vendor_name_in_the_search_box(String arg1, String arg2) throws Throwable {
 
     }
+
 
 
     @Given("^Consumer is in the Vouchers Page$")
     public void consumer_is_in_the_Vouchers_Page() throws Throwable {
    }
 
-
-
-    @After
-    public void close_Browser()
-    {
-        driver.quit();
-    }
 
 
 }
