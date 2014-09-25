@@ -40,6 +40,9 @@ public class Homepage {
     public void consumer_is_in_the_HomePage() throws Throwable {
         driver.get(homepage_url);
     }
+    @Then("^the slider automatically switches every three seconds$")
+    public void the_slider_automatically_switches_every_three_seconds() {
+    }
 
 }
 
