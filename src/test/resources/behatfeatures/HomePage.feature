@@ -18,6 +18,7 @@ Feature: Home page functionality
   //  When consumer moves cursor over the slider element
   //  Then the slider stops
   //  And the deal present in that slider element is highlighted
+    //
 
   Scenario Outline: consumer navigates to the deal page
     Given consumer is in 'Home' page
