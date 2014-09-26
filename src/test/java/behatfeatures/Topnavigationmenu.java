@@ -14,12 +14,18 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import javax.xml.bind.SchemaOutputResolver;
+
 /**
  * Created by Sasikala on 24/09/2014.
  */
 public class Topnavigationmenu {
     private WebDriver driver;
     private String homepage_url = "http://www.sparwelt.de/";
+    int min = 2, max = 4, randomNum = 2;
+    List<WebElement> menulist;
+    String menudesc = "" ;
+    WebElement title = null;
 
    @Before
     public void startBrowser()
@@ -60,8 +66,10 @@ public class Topnavigationmenu {
         assertTrue(submenu.contains(arg1));
         System.out.println("corresponding menu found ");
     }
+
     @When("^Consumer moves the mouse over a menu with flyout \"(.*?)\"$")
     public void Consumer_moves_the_mouse_over_a_menu_with_flyout(String arg1) throws Throwable {
+
         WebElement element = driver.findElement(By.linkText(arg1));
         Actions action = new Actions(driver);
         action.moveToElement(element).build().perform();
@@ -69,29 +77,71 @@ public class Topnavigationmenu {
 
     @Then("^\"(.*?)\" Flyoutmenu should be shown on the screen$")
     public void flyoutmenu_should_be_shown_on_the_screen(String arg1) throws Throwable {
-        String titlepage = driver.getPageSource();
-        assertTrue(titlepage.contains(arg1));
+
+        WebElement pagetitle = driver.findElement(By.partialLinkText(arg1));
+        System.out.println(pagetitle.getText());
+        System.out.println(pagetitle.isDisplayed());
+        assertTrue(pagetitle.isDisplayed());
+
     }
     @When("^Consumer moves the mouse over \"(.*?)\" menu$" )
     public void Consumer_moves_the_mouse_over_menu(String arg1) throws Throwable {
-        int min = 1, max = 30;
+
+        WebElement element = driver.findElement(By.linkText(arg1));
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
+
+        if ( arg1.equals("Gutscheine")) {
+            menulist = driver.findElements(By.xpath("//div[@class='row sub-navigation voucher-sub-nav collapse']/descendant::a"));
+            System.out.println(menulist.size());
+            min = 1 ; max = menulist.size() - 4;
+            System.out.println(max +" " +min);
+        }
+        else {
+            menulist = driver.findElements(By.xpath("//div[@class='row sub-navigation finance-sub-nav collapse']/descendant::a"));
+            min = 0 ; max = 3;
+        }
+
         Random rand = new Random();
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-
-    }
-    @When("^Selects a vendor \"(.*?)\" from Finanzen menu$")
-    public void selects_a_vendor_from_Finanzen_menu(String arg1) throws Throwable {
-
+        randomNum = rand.nextInt((max - min) + 1) + min;
+        System.out.println(randomNum);
     }
 
-    @When("^Selects a vendor \"(.*?)\" from Gutscheine menu$")
-    public void selects_a_vendor_from_Gutscheine_menu(String arg1) throws Throwable {
+    @When("^Selects a menu \"(.*?)\" from \"(.*?)\" menu$")
+    public void selects_a_menu_from_menu(String arg1, String arg2) throws Throwable {
+        String xPath = " ";
 
+        if (menulist.size() <= 0 ) {
+            System.out.println(" No menulist to click");
+        }
+
+        if (arg2.equals("Finanzen")) {
+            if (arg1.contains("1")) {
+                randomNum = 2;// 3 - ratenjredit 1-tagesweld 2- kreditkarte 0 - girokonto
+                xPath = "html/body/div[2]/div[2]/div[1]/ul/li[3]";
+            }
+            else {
+               randomNum = 3;
+               xPath = "html/body/div[1]/div[4]/ul/li[5]/span";
+           }
+        }
+
+        else {
+           xPath = "//*[@id='panels-econa']/div[1]/div[1]/div/div/h1";
+        }
+
+        menudesc = menulist.get(randomNum).getText();
+        menulist.get(randomNum).click();
+        title = driver.findElement(By.xpath(xPath));
     }
 
-    @Then("^Screen should show details of selected vendor in the screen$")
-    public void Screen_should_show_details_of_selected_vendor_in_the_screen() throws Throwable {
-
+    @Then("^Screen should show details of selected menu in the screen$")
+    public void screen_should_show_details_of_selected_menu_in_the_screen() throws Throwable {
+        System.out.println("vendor screen");
+        String actual = title.getText();
+        System.out.println(actual);
+        boolean result = actual.contains(menudesc);
+        assertTrue(result);
     }
 
     @After
