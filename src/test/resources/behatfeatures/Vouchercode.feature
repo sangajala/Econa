@@ -23,3 +23,35 @@ Feature: Select and copy a voucher code from a vendor
     | "Amazon" |
 
 
+    Scenario Outline: User selects the voucher and opens the title from image
+
+      Given user selected a random vendor with name 'Amazon' from 'Gutscheine' menu
+      When selects the '<User_selected_option>' of voucher with title '20%-Gutschein für Sport- und Outdoor-Bekleidung bei Amazon'
+      Then new page is opened
+      And voucher popup is shown with the title '20%-Gutschein für Sport- und Outdoor-Bekleidung bei Amazon'
+      And the voucher code is shown with text 'winter20'
+      When user copies the voucher code by clicking sissior icon
+      Then the voucher code should be saved in clipboard
+
+      Examples:
+
+      |User_selected_option|
+      |Title               |
+      |Image               |
+      |voucher button     |
+
+      Scenario Outline: User a valid user perform news letter enrollment
+
+        Given user is in homepage
+        When enters for newsletter enrollment with email as '<email>'
+        Then message should display with text '<message>'
+
+        Examples:
+        |email|message|
+        |     |Please fill out this field.|
+        |test |Please include and '@' in the email address. 'test' is missing an '@'
+        |test@||
+        |test@2||
+        |test@test.com|Success|
+
+
