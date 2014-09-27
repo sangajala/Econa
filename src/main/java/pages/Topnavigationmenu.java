@@ -1,5 +1,7 @@
-package behatfeatures;
+package pages;
 import static org.junit.Assert.*;
+
+import behatfeatures.Utils;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -46,7 +48,7 @@ public class Topnavigationmenu {
     public void navigation_menu_should_be_shown_in_the_top_of_the_screen(String arg1) throws Throwable {
 
         List<WebElement> mainmenu = driver.findElements(By.partialLinkText(arg1));
-        assertTrue(mainmenu.size()>0 );
+        Assert.assertTrue(mainmenu.size() > 0);
         System.out.println(arg1);
         System.out.println("Menu found successfully");
     }
@@ -63,7 +65,7 @@ public class Topnavigationmenu {
     @Then("^The \"(.*?)\" corresponding menu screen should be shown$")
     public void the_corresponding_menu_screen_should_be_shown(String arg1) throws Throwable {
         String submenu = driver.getPageSource();
-        assertTrue(submenu.contains(arg1));
+        Assert.assertTrue(submenu.contains(arg1));
         System.out.println("corresponding menu found ");
     }
 
@@ -81,7 +83,7 @@ public class Topnavigationmenu {
         WebElement pagetitle = driver.findElement(By.partialLinkText(arg1));
         System.out.println(pagetitle.getText());
         System.out.println(pagetitle.isDisplayed());
-        assertTrue(pagetitle.isDisplayed());
+        Assert.assertTrue(pagetitle.isDisplayed());
 
     }
     @When("^Consumer moves the mouse over \"(.*?)\" menu$" )
@@ -141,7 +143,7 @@ public class Topnavigationmenu {
         String actual = title.getText();
         System.out.println(actual);
         boolean result = actual.contains(menudesc);
-        assertTrue(result);
+        Assert.assertTrue(result);
     }
 
     @After

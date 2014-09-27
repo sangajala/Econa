@@ -1,4 +1,4 @@
-package behatfeatures;
+package utils;
 
 import org.openqa.selenium.WebDriver;
 

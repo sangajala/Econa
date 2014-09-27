@@ -1,6 +1,8 @@
-package behatfeatures;
+package pages;
 
 import static org.junit.Assert.*;
+
+import behatfeatures.Utils;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -64,11 +66,11 @@ public class Search {
         if (searchpage.equals("HomePage")) {
             WebElement topsuggest = driver.findElement(By.xpath("//*[@id='topsuggest']/ul/li[1]/a"));
             System.out.println(topsuggest.getText());
-            assertTrue(topsuggest.isDisplayed());
+            Assert.assertTrue(topsuggest.isDisplayed());
         }
         else {
             WebElement vouchersuggest = driver.findElement(By.xpath("//*[@id='vouchersuggest']/ul/li[1]/a"));
-            assertTrue(vouchersuggest.isDisplayed());
+            Assert.assertTrue(vouchersuggest.isDisplayed());
             System.out.println("drop-down-menu is shown");
         }
         System.out.println("drop-down-menu is shown");
@@ -85,7 +87,7 @@ public class Search {
             firstelement = driver.findElement(By.xpath("//*[@id='vouchersuggest']/ul/li[1]/a"));
         }
         String result = firstelement.getText().toLowerCase();
-        assertTrue(result.contains(searchstring));
+        Assert.assertTrue(result.contains(searchstring));
         System.out.println("drop-down suggestion match");
     }
 
@@ -132,7 +134,7 @@ public class Search {
 
         String resultignorecase = result.getText().toLowerCase();
         System.out.println(resultignorecase);
-        assertTrue(resultignorecase.contains(searchstring));
+        Assert.assertTrue(resultignorecase.contains(searchstring));
     }
 
     @When("^Consumer enters a part of vendor name \"(.*?)\" in the \"(.*?)\" search box$")

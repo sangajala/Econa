@@ -1,5 +1,6 @@
-package behatfeatures;
+package pages;
 
+import behatfeatures.Utils;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
