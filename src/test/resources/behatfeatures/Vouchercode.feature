@@ -5,7 +5,7 @@ Feature: Select and copy a voucher code from a vendor
 
   Background:
     Given Consumer is in the HomePage
-
+@sasi@21
   Scenario Outline: Select a voucher and copy a voucher code from a vendor
      When Consumer moves the mouse over "Gutscheine" menu
       And Selects a vendor <vendor> from Gutscheine menu
@@ -23,6 +23,7 @@ Feature: Select and copy a voucher code from a vendor
     | "Amazon" |
 
 
+  @22@23@ram
     Scenario Outline: User selects the voucher and opens the title from image
 
       Given user selected a random vendor with name 'Amazon' from 'Gutscheine' menu
@@ -40,6 +41,7 @@ Feature: Select and copy a voucher code from a vendor
       |Image               |
       |voucher button     |
 
+    @26@27
       Scenario Outline: User a valid user perform news letter enrollment
 
         Given user is in homepage
@@ -53,5 +55,15 @@ Feature: Select and copy a voucher code from a vendor
         |test@||
         |test@2||
         |test@test.com|Success|
+
+      @25@28
+
+        Scenario Outline: Goggle robot can read files in my domian
+
+        Then google robot can access the file with url '<url>'
+        Examples:
+        |url|
+        |sitemap.xml|
+        |robots.txt  |
 
 
