@@ -6,18 +6,17 @@ import org.junit.BeforeClass;
 /**
  * Created by sriramangajala on 27/09/2014.
  */
-public class Hooks {
-
+public class Hooks
+{
     @BeforeClass
-    public void openBrowser()
+    public static void openBrowser()
     {
         BrowserFactory.getDriver();
     }
 
     @AfterClass
-    public void close()
+    public static  void close()
     {
         BrowserFactory.getDriver().quit();
-
     }
 }

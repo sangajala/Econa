@@ -43,7 +43,6 @@ public class StepDefs {
 
     @When("^Consumer moves the mouse over a menu with flyout \"(.*?)\"$")
     public void Consumer_moves_the_mouse_over_a_menu_with_flyout(String flyoutmenu) throws Throwable {
-
         topNavigationMenuPage.selectaflyoutmenu(flyoutmenu);
     }
 
