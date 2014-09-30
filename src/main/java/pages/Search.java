@@ -23,6 +23,9 @@ public class Search extends basePage {
     private String searchString = " ";
     private String searchPg = "HomePage";
     private String homepage_url = "http://www.sparwelt.de/";
+    private List<WebElement> result;
+    private WebElement searchbutton;
+
 
     public void searchForKeyword(String searchKeyword) {
         if ( driver.getCurrentUrl().equals(homepage_url))       {
@@ -61,8 +64,12 @@ public class Search extends basePage {
 
     public void selectSearchOption() throws InterruptedException
     {
-        WebElement searchbutton;
+
         if (searchPg.equals("HomePage")) {
+            /*
+             While doing a partial search  using the HomePage Search box, a extra click to the Search-text box or the Search-icon
+             is required to perform the search action using the scripts. But while doing manually, it is not required.
+             */
             searchBox.click();
             searchbutton = driver.findElement(
                     By.xpath("//html/body/div[2]/header/div[3]/div/div[1]/form/div[1]/span/button"));
@@ -74,7 +81,16 @@ public class Search extends basePage {
     }
 
     public void searchResultPage(){
-        List<WebElement> result;
+        /* The landing result page header differs for the Homepage and Voucher page
+
+        1) The header looks like Suche nach "searchkeyword" for below 3 searches, xpath=//*[@id='panels-econa']/div[1]/div[1]/h1
+        HomePage Partial vendor name search -
+        HomePage Full vendor name search
+        Voucher Page Partial vendor name search
+        2) The header looks like "Full vendor name" for below type of search, xpath=//*[@id='panels-econa']/div[1]/div[1]/div/div/h1
+        Since we are not aware of what kind of search is performed, check for the presence of the elements using findElements
+        */
+
         result =driver.findElements(By.xpath("//*[@id='panels-econa']/div[1]/div[1]/h1"));
         if ( result.size() <= 0 ) {
             result = driver.findElements(By.xpath("//*[@id='panels-econa']/div[1]/div[1]/div/div/h1"));

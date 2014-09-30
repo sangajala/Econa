@@ -11,7 +11,7 @@ import utils.Hooks;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         format = {"html:target/HomePageReport"},
-        features = "src/test/resources/behatfeatures/Vouchercode.feature"
+        features = "src/test/resources/behatfeatures/Topnavigationmenu.feature"
 )
 public class RunFile extends Hooks {
 }

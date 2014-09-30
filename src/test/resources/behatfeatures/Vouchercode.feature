@@ -14,15 +14,16 @@ Feature: Select and copy a voucher code from a vendor
        And Vouchers from the selected vendor should be displayed
        And Voucher overlay should be shown
       When Consumer clicks a voucher
-      Then Vendors shop should be shown in a new window
+      Then Vendors shop should be shown in a new window<vendor_shop>
        And Voucher code should be shown inside a text box in a new window
       When Consumer clicks the copy icon in the screen
       Then A message saying "copied" should be shown inside the text box
        And voucher code should be copied to the clipboard
 
   Examples:
-    | vendor   |
-    | "Amazon" |
+    | vendor            |  vendor_shop            |
+    | "Frontlineshop"   | "frontlineshop.com"     |
+
 
 
 #  @22@23@ram
