@@ -1,4 +1,4 @@
-@sasi
+
 Feature: Top Navigation menus
 
   As a consumer
@@ -30,7 +30,7 @@ Feature: Top Navigation menus
      |"Gutscheine"        | "Gutschein-Shops von A-Z"      |
      |"Finanzen"          | "Girokonto"                    |
 
-@10Flyoutsubmenus
+@10Flyoutsubmenus@home
   Scenario Outline: User can randomly navigate to elements from flyouts and check the landing page
      Given Consumer is in the HomePage
       When Consumer moves the mouse over a menu with flyout <MenuwithFlyout>

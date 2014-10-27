@@ -23,10 +23,10 @@ Feature: Current deals highlights
     And the corresponding details of the deal appears
 
 
-Feature: Check for listings and its elements
-   As a consumer
-   I want to check for listings and its elements
-   So I can get benefit of best suitable deals
+#Feature: Check for listings and its elements
+#   As a consumer
+#   I want to check for listings and its elements
+#   So I can get benefit of best suitable deals
 
   @sridevi@done@5@6
   Scenario: In the home page consumer can view "Beliebteste Schnäppchen" listing and also can view the deatils of the deals present in the listing
@@ -57,11 +57,11 @@ Feature: Check for listings and its elements
    And the Top-Ten Gutscheine listing should have atleast one element
    When select all elements one after one from 'Top-Ten Gutscheine' listing
     Then corresponding pages appear
-
- Feature: Check for static links
-   As a consumer
-   I want to check static links
-   So I can get some additional details
+#
+# Feature: Check for static links
+#   As a consumer
+#   I want to check static links
+#   So I can get some additional details
 
   @sridevi@done@8
   Scenario Outline: Consumer can view static links

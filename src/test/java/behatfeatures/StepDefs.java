@@ -4,6 +4,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import pages.*;
 import utils.BrowserFactory;
 
@@ -12,7 +13,7 @@ import utils.BrowserFactory;
  */
 public class StepDefs {
 
-    public static WebDriver driver = BrowserFactory.getDriver();
+  //  public static WebDriver driver = BrowserFactory.getDriver();
 
     Homepage homePage = new Homepage();
     Search searchPage = new Search();
@@ -145,6 +146,18 @@ public class StepDefs {
     @Then("^voucher code should be copied to the clipboard$")
     public void voucher_code_should_be_copied_to_the_clipboard() throws Throwable {
             voucherPage.check_Voucher_Code_In_ClipBoard();
+    }
+
+    @Given("^Sample test$")
+    public void sample_test() throws Throwable {
+     WebDriver driver1 = new FirefoxDriver();
+        driver1.get("http://google.com");
+
+
+        WebDriver driver2 = new FirefoxDriver();
+        driver2.get("http://ebay.com");
+
+        driver1.navigate().refresh();
     }
 
 

@@ -9,9 +9,11 @@ import utils.Hooks;
  * Created by sriramangajala on 27/09/2014.
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(
-        format = {"html:target/HomePageReport"},
-        features = "src/test/resources/behatfeatures/Topnavigationmenu.feature"
+@CucumberOptions(tags = "@sample",
+        format = {"html:target/HomePageReport"}
+        //,
+        //features = "src/test/resources/behatfeatures/Topnavigationmenu.feature"
 )
-public class RunFile extends Hooks {
+public class RunFile/// extends Hooks
+{
 }
